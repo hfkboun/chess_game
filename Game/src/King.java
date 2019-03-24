@@ -12,7 +12,7 @@ class King extends ChessPiece {
         // checks if the move is a move the piece naturally can do
         int deltaX = Math.abs(targetLocation.getX() - this.getLocation().getX());
         int deltaY = Math.abs(targetLocation.getY() - this.getLocation().getY());
-        if (deltaX + deltaY <= 2) {
+        if (deltaX <= 1 && deltaY <= 1) {
             return true;
         }
         else {
