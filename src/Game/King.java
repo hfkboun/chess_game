@@ -1,3 +1,5 @@
+package Game;
+
 class King extends ChessPiece {
     /**
      * King Class

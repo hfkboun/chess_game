@@ -1,9 +1,11 @@
-class Knight extends ChessPiece {
-    /**
-     * Knight Class
-     */
+package Game;
 
-    public Knight(int x, int y) {
+class Bishop extends ChessPiece {
+    /** 
+     * Bishop Class
+     */
+    
+    public Bishop(int x, int y) {
         super(x, y);
     }
 

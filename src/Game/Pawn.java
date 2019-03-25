@@ -1,9 +1,11 @@
-class Bishop extends ChessPiece {
-    /** 
-     * Bishop Class
+package Game;
+
+class Pawn extends ChessPiece {
+    /**
+     * Pawn Class
      */
-    
-    public Bishop(int x, int y) {
+
+    public Pawn(int x, int y) {
         super(x, y);
     }
 
@@ -11,7 +13,7 @@ class Bishop extends ChessPiece {
     public boolean isPossible(Location targetLocation) {
         return true;
     }
-
+    
     @Override
     public Location[] getPath(Location targetLocation) {
         Location[] path = new Location[10];

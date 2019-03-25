@@ -1,9 +1,11 @@
-class Pawn extends ChessPiece {
+package Game;
+
+class Rook extends ChessPiece {
     /**
-     * Pawn Class
+     * Rook Class
      */
 
-    public Pawn(int x, int y) {
+    public Rook(int x, int y) {
         super(x, y);
     }
 

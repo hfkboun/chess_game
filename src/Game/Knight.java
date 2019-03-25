@@ -1,9 +1,11 @@
-class Queen extends ChessPiece {
+package Game;
+
+class Knight extends ChessPiece {
     /**
-     * Queen Class
+     * Knight Class
      */
 
-    public Queen(int x, int y) {
+    public Knight(int x, int y) {
         super(x, y);
     }
 
@@ -11,7 +13,7 @@ class Queen extends ChessPiece {
     public boolean isPossible(Location targetLocation) {
         return true;
     }
-    
+
     @Override
     public Location[] getPath(Location targetLocation) {
         Location[] path = new Location[10];

@@ -1,3 +1,5 @@
+package Game;
+
 class Location {
     /**
      * Location Class
