@@ -52,7 +52,7 @@ class Board {
             ChessPiece[] allPieces = getAllPiecesInBoard();
             for (ChessPiece tempPiece : allPieces) {
                 for (Location tempLocation : path) {
-                    if (tempLocation == tempPiece.getLocation()) {
+                    if (tempLocation.equals(tempPiece.getLocation())) {
                         return false;
                     }
                 }
@@ -67,12 +67,12 @@ class Board {
         ChessPiece[] blackPieces = black.getAllPiecesInPlayer();
         
         for(ChessPiece tempPiece : whitePieces){
-            if (targetLocation == tempPiece.getLocation()){
+            if (targetLocation.equals(tempPiece.getLocation())){
                 return 'w';
             }
         }
         for(ChessPiece tempPiece : blackPieces){
-            if (targetLocation == tempPiece.getLocation()){
+            if (targetLocation.equals(tempPiece.getLocation())){
                 return 'b';
             }
         }

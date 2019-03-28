@@ -91,7 +91,7 @@ class Player {
 	
 	public ChessPiece getPieceFromLocation(Location loc) {
         for (int i = 0; i < 16; i++) {
-			if (loc == pieces[i].getLocation()) {
+			if (loc.equals(pieces[i].getLocation())) {
 				return pieces[i];
 			}
         }
