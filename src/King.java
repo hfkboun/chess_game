@@ -3,8 +3,8 @@ class King extends ChessPiece {
      * King Class
      */
 
-    public King(int x, int y) {
-        super(x, y);
+    public King(int x, int y, char c) {
+        super(x, y, c);
     }
 
     @Override

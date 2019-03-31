@@ -64,12 +64,12 @@ class Board {
         ChessPiece[] whitePieces = white.getAllPiecesInPlayer();
         ChessPiece[] blackPieces = black.getAllPiecesInPlayer();
         
-        for(ChessPiece tempPiece : whitePieces){
+        for (ChessPiece tempPiece : whitePieces){
             if (targetLocation.equals(tempPiece.getLocation())){
                 return 'w';
             }
         }
-        for(ChessPiece tempPiece : blackPieces){
+        for (ChessPiece tempPiece : blackPieces){
             if (targetLocation.equals(tempPiece.getLocation())){
                 return 'b';
             }
@@ -77,8 +77,26 @@ class Board {
         return '0';
     }
 
-    public void move(Player player, String piece, Location targetLocation) {
+    // movePawn
+    public void movePawn(Player player, String piece, Location targetLocation) {
         
+        if (player.getPieceFromString(piece) instanceof Pawn) {
+            if (Math.abs(targetLocation.getX() - player.getPieceFromString(piece).getLocation().getX()) == 1) {
+                if (isTargetClear(targetLocation) == '0') {
+                    // illegal move
+                }
+                else {
+                    move(player, piece, targetLocation);
+                }
+            }
+        }
+    }
+
+
+
+    // pawn's firstMove should change to 1
+    public void move(Player player, String piece, Location targetLocation) {
+
         // if the turn is the player's, continue
         if ((counter % 2 == 0 && player.getColour() == 'w') || (counter % 2 == 1 && player.getColour() == 'b')) {
                  
@@ -97,7 +115,7 @@ class Board {
                         else if (isTargetClear(targetLocation) != player.getColour() && isTargetClear(targetLocation) != '0') {
                             getEnemyPieceFromLocation(player.getColour(), targetLocation).kill(); 
                         }
-
+                       
                         // if target is empty, move
                         else {
                             player.getPieceFromString(piece).setLocation(targetLocation); // set location

@@ -5,10 +5,12 @@ public abstract class ChessPiece {
 
     protected Location location = new Location();
     protected int status;
+    protected char colour;
 
-    protected ChessPiece(int x, int y) {
+    protected ChessPiece(int x, int y, char c) {
         this.location.setLocation(x, y);
         this.status = 1;
+        this.colour = c;
     }
     
 	protected boolean isPossible(Location targetLocation) {
@@ -37,5 +39,9 @@ public abstract class ChessPiece {
 
     protected void setLocation(Location location) {
         this.location = location;
+    }
+
+    protected char getPieceColour() {
+        return this.colour;
     }
 }

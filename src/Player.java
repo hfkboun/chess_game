@@ -38,48 +38,48 @@ class Player {
 		this.colour = colour;
 		
         if (colour == 'w') {
-            king = new King(0, 4);
-            queen = new Queen(0, 3);
+            king = new King(4, 0, 'w');
+            queen = new Queen(3, 0, 'w');
 
-            rook1 = new Rook(0, 0);
-            rook2 = new Rook(0, 7);
+            rook1 = new Rook(0, 0, 'w');
+            rook2 = new Rook(7, 0, 'w');
 
-            knight1 = new Knight(0, 1);
-            knight2 = new Knight(0, 6);
+            knight1 = new Knight(1, 0, 'w');
+            knight2 = new Knight(6, 0, 'w');
 
-            bishop1 = new Bishop(0, 2);
-            bishop2 = new Bishop(0, 5);
+            bishop1 = new Bishop(2, 0, 'w');
+            bishop2 = new Bishop(5, 0, 'w');
 
-           	pawn1 = new Pawn(1, 0);
-            pawn2 = new Pawn(1, 1);
-            pawn3 = new Pawn(1, 2);
-            pawn4 = new Pawn(1, 3);
-            pawn5 = new Pawn(1, 4);
-            pawn6 = new Pawn(1, 5);
-            pawn7 = new Pawn(1, 6);
-            pawn8 = new Pawn(1, 7);
+           	pawn1 = new Pawn(0, 1, 'w');
+            pawn2 = new Pawn(1, 1, 'w');
+            pawn3 = new Pawn(2, 1, 'w');
+            pawn4 = new Pawn(3, 1, 'w');
+            pawn5 = new Pawn(4, 1, 'w');
+            pawn6 = new Pawn(5, 1, 'w');
+            pawn7 = new Pawn(6, 1, 'w');
+            pawn8 = new Pawn(7, 1, 'w');
         }
         else if (colour == 'b') {
-            king = new King(7, 4);
-            queen = new Queen(7, 3);
+            king = new King(4, 7, 'b');
+            queen = new Queen(3, 7, 'b');
 
-            rook1 = new Rook(7, 7);
-            rook2 = new Rook(7, 0);
+            rook1 = new Rook(7, 7, 'b');
+            rook2 = new Rook(0, 7, 'b');
 
-            knight1 = new Knight(7, 6);
-            knight2 = new Knight(7, 1);
+            knight1 = new Knight(6, 7, 'b');
+            knight2 = new Knight(1, 7, 'b');
 
-            bishop1 = new Bishop(7, 5);
-            bishop2 = new Bishop(7, 2);
+            bishop1 = new Bishop(5, 7, 'b');
+            bishop2 = new Bishop(2, 7, 'b');
 
-            pawn1 = new Pawn(6, 0);
-            pawn2 = new Pawn(6, 1);
-            pawn3 = new Pawn(6, 2);
-            pawn4 = new Pawn(6, 3);
-            pawn5 = new Pawn(6, 4);
-            pawn6 = new Pawn(6, 5);
-            pawn7 = new Pawn(6, 6);
-			pawn8 = new Pawn(6, 7);
+            pawn1 = new Pawn(0, 6, 'b');
+            pawn2 = new Pawn(1, 6, 'b');
+            pawn3 = new Pawn(2, 6, 'b');
+            pawn4 = new Pawn(3, 6, 'b');
+            pawn5 = new Pawn(4, 6, 'b');
+            pawn6 = new Pawn(5, 6, 'b');
+            pawn7 = new Pawn(6, 6, 'b');
+			pawn8 = new Pawn(7, 6, 'b');
         }
     }
 

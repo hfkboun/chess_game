@@ -3,13 +3,20 @@ class Bishop extends ChessPiece {
      * Bishop Class
      */
     
-    public Bishop(int x, int y) {
-        super(x, y);
+    public Bishop(int x, int y, char c) {
+        super(x, y,c);
     }
 
     @Override
     public boolean isPossible(Location targetLocation) {
-        return true;
+        int deltaX = Math.abs(targetLocation.getX() - this.getLocation().getX());
+        int deltaY = Math.abs(targetLocation.getY() - this.getLocation().getY());
+        if (deltaX == deltaY) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
