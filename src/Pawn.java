@@ -1,5 +1,3 @@
-package Game;
-
 class Pawn extends ChessPiece {
     /**
      * Pawn Class

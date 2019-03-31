@@ -1,5 +1,3 @@
-package Game;
-
 class Bishop extends ChessPiece {
     /** 
      * Bishop Class

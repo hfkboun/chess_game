@@ -1,5 +1,3 @@
-package Game;
-
 class Rook extends ChessPiece {
     /**
      * Rook Class

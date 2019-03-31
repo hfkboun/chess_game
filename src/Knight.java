@@ -1,5 +1,3 @@
-package Game;
-
 class Knight extends ChessPiece {
     /**
      * Knight Class

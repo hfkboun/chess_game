@@ -1,5 +1,3 @@
-package Game;
-
 public abstract class ChessPiece {
     /**
      * ChessPiece Class

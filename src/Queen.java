@@ -1,5 +1,3 @@
-package Game;
-
 class Queen extends ChessPiece {
     /**
      * Queen Class
