@@ -3,7 +3,7 @@ public abstract class ChessPiece {
      * ChessPiece Class
      */
 
-    protected Location location = new Location();
+    protected Location location = new Location(0, 0);
     protected int status;
     protected char colour;
 

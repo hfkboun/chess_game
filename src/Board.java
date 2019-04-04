@@ -9,6 +9,7 @@ class Board {
 
     Player white;
     Player black;
+    String[][] boardArrayForDisplay;
 
     public Board() {
         white = new Player('w');
@@ -78,7 +79,7 @@ class Board {
     }
 
     // movePawn
-    public void movePawn(Player player, String piece, Location targetLocation) {
+    public void movePawn(Player player, String piece, Location targetLocation) throws Exception {
         
         if (player.getPieceFromString(piece) instanceof Pawn) {
             if (Math.abs(targetLocation.getX() - player.getPieceFromString(piece).getLocation().getX()) == 1) {
@@ -138,6 +139,60 @@ class Board {
         else {
             // illegal move
             throw new Exception("opponentTurn");
+        }
+    }
+    
+   /* public void display() {
+        boardArrayForDisplay = new String[8][8];
+        Location newLoc;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                newLoc = new Location(i,j);
+                if (white.getPieceFromLocation(newLoc) instanceof ChessPiece) {
+                    boardArrayForDisplay[i][j] = "White " + white.getPieceFromLocation(newLoc);
+                }
+                else if (black.getPieceFromLocation(newLoc) instanceof ChessPiece) { 
+                    boardArrayForDisplay[i][j] = "Black " + white.getPieceFromLocation(newLoc);
+                }
+                else {(boardArrayForDisplay[i][j]);
+            }
+            System.out.println();
+        }
+    }
+}
+
+                    boardArrayForDisplay[i][j] = " x ";
+                }      
+            }
+        }
+        
+        System.out.println("--- BOARD ---\n");
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.printf(boardArrayForDisplay[i][j]);
+            }
+            System.out.println();
+        }
+
+    } */
+
+    public void display() {
+        /* TODO:        
+         * Board display yonu ve sirasi duzelt.
+         * if null ise'yi check et
+         */
+        boardArrayForDisplay = new String[8][8];
+        for (ChessPiece tempPiece : getAllPiecesInBoard()) {
+            boardArrayForDisplay[tempPiece.getLocation().getX()][tempPiece.getLocation().getY()] = tempPiece.toString();
+        }
+
+        System.out.println("--- BOARD ---\n");
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (boardArrayForDisplay[i][j] != "") System.out.printf(boardArrayForDisplay[i][j]);
+                else System.out.println(" x ");
+            }
+            System.out.println();
         }
     }
 }

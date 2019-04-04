@@ -6,6 +6,10 @@ class Location {
     private int x;
     private int y;
 
+    public Location(int x, int y) {
+        setLocation(x, y);
+    }
+
     public int getX() {
         return this.x;
     }

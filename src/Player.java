@@ -28,11 +28,7 @@ class Player {
 	Pawn pawn7;
 	Pawn pawn8;
 
-	ChessPiece[] pieces = {king, queen, 
-                rook1, rook2, 
-                knight1, knight2, 
-                bishop1, bishop2, 
-                pawn1, pawn2, pawn3, pawn4, pawn5, pawn6, pawn7, pawn8};
+	ChessPiece[] pieces = new ChessPiece[16];
 
     public Player(char colour) {
 		this.colour = colour;
@@ -57,7 +53,7 @@ class Player {
             pawn5 = new Pawn(4, 1, 'w');
             pawn6 = new Pawn(5, 1, 'w');
             pawn7 = new Pawn(6, 1, 'w');
-            pawn8 = new Pawn(7, 1, 'w');
+			pawn8 = new Pawn(7, 1, 'w');			
         }
         else if (colour == 'b') {
             king = new King(4, 7, 'b');
@@ -80,7 +76,24 @@ class Player {
             pawn6 = new Pawn(5, 6, 'b');
             pawn7 = new Pawn(6, 6, 'b');
 			pawn8 = new Pawn(7, 6, 'b');
-        }
+		}
+			
+		pieces[0] = king;
+		pieces[1] = queen;
+		pieces[2] = rook1;
+		pieces[3] = rook2;
+		pieces[4] = knight1;
+		pieces[5] = knight2;
+		pieces[6] = bishop1;
+		pieces[7] = bishop2;
+		pieces[8] = pawn1;
+		pieces[9] = pawn2;
+		pieces[10] = pawn3;
+		pieces[11] = pawn4;
+		pieces[12] = pawn5;
+		pieces[13] = pawn6;
+		pieces[14] = pawn7;
+		pieces[15] = pawn8;
     }
 
     public char getColour() {
@@ -89,8 +102,9 @@ class Player {
 	
 	public ChessPiece getPieceFromLocation(Location loc) {
         for (int i = 0; i < 16; i++) {
+			// System.out.println(pieces[i]);
 			if (loc.equals(pieces[i].getLocation())) {
-				return pieces[i];
+				if (pieces[i].getStatus() == 1) return pieces[i];
 			}
         }
         return null;
