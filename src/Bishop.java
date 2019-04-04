@@ -21,9 +21,55 @@ class Bishop extends ChessPiece {
 
     @Override
     public Location[] getPath(Location targetLocation) {
-        Location[] path = new Location[10];
+        Location[] path = new Location[8];
         path[0] = this.getLocation();
-        // todo
+        if ((targetLocation.getX() - this.getLocation().getX()) > 0) {
+            if ((targetLocation.getY() - this.getLocation().getY()) > 0) {
+                // top right
+                int i = this.getLocation().getX();
+                int j = this.getLocation().getY();
+                int k = 1;
+                while (targetLocation.getX() > i) {
+                    path[k].setLocation(i, j);
+                    i++;
+                    j++;
+                }
+            }
+            else {
+                // bottom right
+                int i = this.getLocation().getX();
+                int j = this.getLocation().getY();
+                int k = 1;
+                while (targetLocation.getX() > i) {
+                    path[k].setLocation(i, j);
+                    i++;
+                    j--;
+                }
+            }
+        }
+        else {
+            if ((targetLocation.getY() - this.getLocation().getY()) > 0) {
+                // top left
+                int i = this.getLocation().getX();
+                int j = this.getLocation().getY();
+                int k = 1;
+                while (targetLocation.getX() < i) {
+                    path[k].setLocation(i, j);
+                    i--;
+                    j++;
+                }
+            } else {
+                // bottom left
+                int i = this.getLocation().getX();
+                int j = this.getLocation().getY();
+                int k = 1;
+                while (targetLocation.getX() < i) {
+                    path[k].setLocation(i, j);
+                    i--;
+                    j--;
+                }
+            }
+        }
         return path;
     }
 }

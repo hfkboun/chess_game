@@ -95,7 +95,7 @@ class Board {
 
 
     // pawn's firstMove should change to 1
-    public void move(Player player, String piece, Location targetLocation) {
+    public void move(Player player, String piece, Location targetLocation) throws Exception {
 
         // if the turn is the player's, continue
         if ((counter % 2 == 0 && player.getColour() == 'w') || (counter % 2 == 1 && player.getColour() == 'b')) {
@@ -105,10 +105,11 @@ class Board {
                     
                     // if there is no obstacles, continue
                     if (isPathClear(player.getPieceFromString(piece).getPath(targetLocation))) {
-                        
+                
                         // if target is same colour, error
                         if (isTargetClear(targetLocation) == player.getColour()) {
                             // illegal move
+                            throw new Exception("targetIsSameColour");
                         }
                         
                         // if target is different colour, kill piece
@@ -120,20 +121,23 @@ class Board {
                         else {
                             player.getPieceFromString(piece).setLocation(targetLocation); // set location
                         }
-                     }
+                    }
 
-                     else {
+                    else {
                         // illegal move
-                     }
-                 }
-
-                 else {
-                     // illegal move
-                 }   
+                        throw new Exception("pathIsNotClear");
+                    }
+            }
+            
+            else {
+                // illegal move
+                throw new Exception("invalidMove");
+            }   
         }
         
         else {
             // illegal move
+            throw new Exception("opponentTurn");
         }
     }
 }

@@ -21,9 +21,47 @@ class Rook extends ChessPiece {
     
     @Override
     public Location[] getPath(Location targetLocation) {
-        Location[] path = new Location[10];
+        Location[] path = new Location[8];
         path[0] = this.getLocation();
-        // todo
+        if (targetLocation.getX() == this.getLocation().getX()) {
+            if ((targetLocation.getY() - this.getLocation().getY()) > 0) {
+                int i = this.getLocation().getY();
+                int j = 1;
+                while (targetLocation.getY() > i) {
+                    path[j].setLocation(this.getLocation().getX(), i);
+                    i++; j++;
+                }
+            }
+            else {
+                int i = this.getLocation().getY();
+                int j = 1;
+                while (targetLocation.getY() < i) {
+                    path[j].setLocation(this.getLocation().getX(), i);
+                    i--;
+                    j++;
+                }
+            }
+        }
+        else {
+            if ((targetLocation.getX() - this.getLocation().getX()) > 0) {
+                int i = this.getLocation().getX();
+                int j = 1;
+                while (targetLocation.getX() > i) {
+                    path[j].setLocation(i, this.getLocation().getY());
+                    i++;
+                    j++;
+                }
+            }
+            else {
+                int i = this.getLocation().getX();
+                int j = 1;
+                while (targetLocation.getX() < i) {
+                    path[j].setLocation(i, this.getLocation().getY());
+                    i--;
+                    j++;
+                }
+            }
+        }
         return path;
     }
 }

@@ -22,9 +22,8 @@ class Knight extends ChessPiece {
 
     @Override
     public Location[] getPath(Location targetLocation) {
-        Location[] path = new Location[10];
+        Location[] path = new Location[1];
         path[0] = this.getLocation();
-        // todo
         return path;
     }
 }

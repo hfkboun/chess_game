@@ -22,7 +22,8 @@ class King extends ChessPiece {
 
     @Override
     public Location[] getPath(Location targetLocation) {  
-        return null;
+        Location[] path = new Location[1];
+        path[0] = this.getLocation();
+        return path;
     }
-
 }
