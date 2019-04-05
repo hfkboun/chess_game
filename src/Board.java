@@ -45,20 +45,17 @@ class Board {
 
     public boolean isPathClear(Location[] path) {
         // if there is no obstacle return true
-        if (path.length == 1) {
-            return true;
-        }
-        else {
-            ChessPiece[] allPieces = getAllPiecesInBoard();
-            for (ChessPiece tempPiece : allPieces) {
-                for (Location tempLocation : path) { // path.doluElemanlar()
-                    if (tempLocation.equals(tempPiece.getLocation())) {
+        ChessPiece[] allPieces = getAllPiecesInBoard();
+        for (ChessPiece tempPiece : allPieces) {
+            for (int i = 0; i < path.length; i++) {
+                if (path[i] != null) {
+                    if (path[i].equals(tempPiece.getLocation())) {
                         return false;
                     }
-                } 
+                }
             }
-            return true;
         }
+        return true;
     }
 
     public char isTargetClear(Location targetLocation) {
@@ -102,16 +99,16 @@ class Board {
 
     // pawn's firstMove should change to 1
     public void move(Player player, String piece, Location targetLocation) throws Exception {
-        System.out.println("1");
+
         // if the turn is the player's, continue
         if ((counter % 2 == 0 && player.getColour() == 'w') || (counter % 2 == 1 && player.getColour() == 'b')) {
-            System.out.println("2");
+
             // if the move is legal for the piece
             if (player.getPieceFromString(piece).isPossible(targetLocation)) {
-                System.out.println("3");
+
                 // if there is no obstacles, continue
                 if (isPathClear(player.getPieceFromString(piece).getPath(targetLocation))) {
-                    System.out.println("4");
+
                     // if target is same colour, error
                     if (isTargetClear(targetLocation) == player.getColour()) {
                         // illegal move
@@ -122,14 +119,12 @@ class Board {
                     else if (isTargetClear(targetLocation) != player.getColour() && isTargetClear(targetLocation) != '0') {
                         getEnemyPieceFromLocation(player.getColour(), targetLocation).kill();
                         counter++;
-                        System.out.println("5");
                     }
                        
                     // if target is empty, move
                     else {
                         player.getPieceFromString(piece).setLocation(targetLocation); // set location
                         counter++;
-                        System.out.println("6");
                     }
                 }
 
@@ -162,14 +157,14 @@ class Board {
             boardArrayForDisplay.put(tempPiece.getLocation().toString(), tempPiece.toString());
         }
         // Print Array
-        System.out.println("--- BOARD ---\n");
+        System.out.printf("---%30s--- %s ---%30s---\n", " ","BOARD", "");
         System.out.printf("%10s%10s%10s%10s%10s%10s%10s%10s\n", "1     ", "2     ", "3     ", "4     ", "5     ", "6     ", "7     ", "8     \n");
         for (int i = 0; i < 8; i++) {
             System.out.printf("%-3c", (char) i + 65);
             for (int j = 0; j < 8; j++) {
                     System.out.printf("%-10s", boardArrayForDisplay.get(new Location(i, j).toString()));
             }    
-            System.out.println();
+            System.out.println("\n");
         }
     }
 }

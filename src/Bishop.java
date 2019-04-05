@@ -30,7 +30,7 @@ class Bishop extends ChessPiece {
                 int j = this.getLocation().getY();
                 int k = 1;
                 while (targetLocation.getX() > i) {
-                    path[k].setLocation(i, j);
+                    path[k] = new Location(i, j);
                     i++;
                     j++;
                 }
@@ -41,7 +41,7 @@ class Bishop extends ChessPiece {
                 int j = this.getLocation().getY();
                 int k = 1;
                 while (targetLocation.getX() > i) {
-                    path[k].setLocation(i, j);
+                    path[k] = new Location(i, j);
                     i++;
                     j--;
                 }
@@ -54,7 +54,7 @@ class Bishop extends ChessPiece {
                 int j = this.getLocation().getY();
                 int k = 1;
                 while (targetLocation.getX() < i) {
-                    path[k].setLocation(i, j);
+                    path[k] = new Location(i, j);
                     i--;
                     j++;
                 }
@@ -64,7 +64,7 @@ class Bishop extends ChessPiece {
                 int j = this.getLocation().getY();
                 int k = 1;
                 while (targetLocation.getX() < i) {
-                    path[k].setLocation(i, j);
+                    path[k] = new Location(i, j);
                     i--;
                     j--;
                 }

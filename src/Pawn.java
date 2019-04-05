@@ -54,9 +54,8 @@ class Pawn extends ChessPiece {
     
     @Override
     public Location[] getPath(Location targetLocation) {
-        Location[] path = new Location[2];
-        path[0] = this.getLocation();
-        path[1].setLocation(targetLocation.getX(), (this.getLocation().getY() + targetLocation.getY()) / 2); // If Double Move
+        Location[] path = new Location[1];
+        path[0] = new Location(targetLocation.getX(), (this.getLocation().getY() + targetLocation.getY()) / 2); // If Double Move
         return path;
     }
     public boolean isFirstMoveCheck() {

@@ -102,12 +102,10 @@ class Player {
 	
 	public ChessPiece getPieceFromLocation(Location loc) {
         for (int i = 0; i < 16; i++) {
-			// System.out.println(pieces[i]);
 			if (loc.equals(pieces[i].getLocation())) {
                 if (pieces[i].getStatus() == 1) return pieces[i];
 			}
         }
-        // System.out.println("hello");
         return null;
 	}
 
@@ -127,7 +125,7 @@ class Player {
 				return knight2;
 			case "bishop1":
 				return bishop1;
-			case "pawn1":
+            case "pawn1":
 				return pawn1;
 			case "pawn2":
 				return pawn2;

@@ -32,7 +32,7 @@ class Queen extends ChessPiece {
                     int i = this.getLocation().getY();
                     int j = 1;
                     while (targetLocation.getY() > i) {
-                        path[j].setLocation(this.getLocation().getX(), i);
+                        path[j] = new Location(this.getLocation().getX(), i);
                         i++;
                         j++;
                     }
@@ -41,7 +41,7 @@ class Queen extends ChessPiece {
                     int i = this.getLocation().getY();
                     int j = 1;
                     while (targetLocation.getY() < i) {
-                        path[j].setLocation(this.getLocation().getX(), i);
+                        path[j] = new Location(this.getLocation().getX(), i);
                         i--;
                         j++;
                     }
@@ -52,7 +52,7 @@ class Queen extends ChessPiece {
                     int i = this.getLocation().getX();
                     int j = 1;
                     while (targetLocation.getX() > i) {
-                        path[j].setLocation(i, this.getLocation().getY());
+                        path[j] = new Location(i, this.getLocation().getY());
                         i++;
                         j++;
                     }
@@ -61,7 +61,7 @@ class Queen extends ChessPiece {
                     int i = this.getLocation().getX();
                     int j = 1;
                     while (targetLocation.getX() < i) {
-                        path[j].setLocation(i, this.getLocation().getY());
+                        path[j] = new Location(i, this.getLocation().getY());
                         i--;
                         j++;
                     }
@@ -76,7 +76,7 @@ class Queen extends ChessPiece {
                     int j = this.getLocation().getY();
                     int k = 1;
                     while (targetLocation.getX() > i) {
-                        path[k].setLocation(i, j);
+                        path[k] = new Location(i, j);
                         i++;
                         j++;
                     }
@@ -87,7 +87,7 @@ class Queen extends ChessPiece {
                     int j = this.getLocation().getY();
                     int k = 1;
                     while (targetLocation.getX() > i) {
-                        path[k].setLocation(i, j);
+                        path[k] = new Location(i, j);
                         i++;
                         j--;
                     }
@@ -99,7 +99,7 @@ class Queen extends ChessPiece {
                     int j = this.getLocation().getY();
                     int k = 1;
                     while (targetLocation.getX() < i) {
-                        path[k].setLocation(i, j);
+                        path[k] = new Location(i, j);
                         i--;
                         j++;
                     }
@@ -110,7 +110,7 @@ class Queen extends ChessPiece {
                     int j = this.getLocation().getY();
                     int k = 1;
                     while (targetLocation.getX() < i) {
-                        path[k].setLocation(i, j);
+                        path[k] = new Location(i, j);
                         i--;
                         j--;
                     }
