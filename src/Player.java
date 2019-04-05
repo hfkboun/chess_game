@@ -95,7 +95,7 @@ class Player {
 		pieces[14] = pawn7;
 		pieces[15] = pawn8;
     }
-
+	
     public char getColour() {
         return this.colour;
 	}
@@ -104,9 +104,10 @@ class Player {
         for (int i = 0; i < 16; i++) {
 			// System.out.println(pieces[i]);
 			if (loc.equals(pieces[i].getLocation())) {
-				if (pieces[i].getStatus() == 1) return pieces[i];
+                if (pieces[i].getStatus() == 1) return pieces[i];
 			}
         }
+        // System.out.println("hello");
         return null;
 	}
 

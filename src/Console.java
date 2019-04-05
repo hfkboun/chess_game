@@ -8,8 +8,6 @@ public class Console {
      * 
      */
      
-    
-    
     public static void main(String[] args) {
         Board board = new Board();
         Scanner reader = new Scanner(System.in);
@@ -18,7 +16,16 @@ public class Console {
         String input = reader.next();
         if (input.toLowerCase().startsWith("n")) System.exit(0);
         board.display();
-
+        try {
+            board.move(board.white, "knight1", new Location(2, 2));
+            // board.move(board.white, "knight1", new Location(1, 0));
+            // board.movePawn(board.white, "pawn1", new Location(0, 3));
+            board.movePawn(board.black, "pawn1", new Location(0, 5));
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+        board.display();
 
         // while true
         // sira beyazda/siyahta

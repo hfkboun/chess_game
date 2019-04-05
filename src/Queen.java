@@ -119,4 +119,9 @@ class Queen extends ChessPiece {
         }
         return path;
     }
+
+    @Override
+    public String toString() {
+        return "Queen";
+    } 
 }

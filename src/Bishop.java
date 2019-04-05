@@ -72,4 +72,9 @@ class Bishop extends ChessPiece {
         }
         return path;
     }
+
+    @Override
+    public String toString() {
+        return "Bishop";
+    } 
 }

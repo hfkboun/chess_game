@@ -66,4 +66,9 @@ class Pawn extends ChessPiece {
     public void setFirstMoveCheck(){
         this.firstMoveCheck = false;
     }
+
+    @Override
+    public String toString() {
+        return "Pawn";
+    }
 }

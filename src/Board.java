@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 class Board {
     /**
@@ -9,7 +10,7 @@ class Board {
 
     Player white;
     Player black;
-    String[][] boardArrayForDisplay;
+    HashMap<String, String> boardArrayForDisplay = new HashMap<String, String>();
 
     public Board() {
         white = new Player('w');
@@ -44,17 +45,17 @@ class Board {
 
     public boolean isPathClear(Location[] path) {
         // if there is no obstacle return true
-        if (path == null) {
+        if (path.length == 1) {
             return true;
         }
         else {
             ChessPiece[] allPieces = getAllPiecesInBoard();
             for (ChessPiece tempPiece : allPieces) {
-                for (Location tempLocation : path) {
+                for (Location tempLocation : path) { // path.doluElemanlar()
                     if (tempLocation.equals(tempPiece.getLocation())) {
                         return false;
                     }
-                }
+                } 
             }
             return true;
         }
@@ -82,13 +83,17 @@ class Board {
     public void movePawn(Player player, String piece, Location targetLocation) throws Exception {
         
         if (player.getPieceFromString(piece) instanceof Pawn) {
+            // 
             if (Math.abs(targetLocation.getX() - player.getPieceFromString(piece).getLocation().getX()) == 1) {
                 if (isTargetClear(targetLocation) == '0') {
                     // illegal move
                 }
                 else {
-                    move(player, piece, targetLocation);
+                    this.move(player, piece, targetLocation);
                 }
+            }
+            else {
+                this.move(player, piece, targetLocation);
             }
         }
     }
@@ -97,32 +102,36 @@ class Board {
 
     // pawn's firstMove should change to 1
     public void move(Player player, String piece, Location targetLocation) throws Exception {
-
+        System.out.println("1");
         // if the turn is the player's, continue
         if ((counter % 2 == 0 && player.getColour() == 'w') || (counter % 2 == 1 && player.getColour() == 'b')) {
-                 
+            System.out.println("2");
             // if the move is legal for the piece
-            if (player.getPieceFromString(piece).isPossible(targetLocation) == true) {
-                    
-                    // if there is no obstacles, continue
-                    if (isPathClear(player.getPieceFromString(piece).getPath(targetLocation))) {
-                
-                        // if target is same colour, error
-                        if (isTargetClear(targetLocation) == player.getColour()) {
-                            // illegal move
-                            throw new Exception("targetIsSameColour");
-                        }
-                        
-                        // if target is different colour, kill piece
-                        else if (isTargetClear(targetLocation) != player.getColour() && isTargetClear(targetLocation) != '0') {
-                            getEnemyPieceFromLocation(player.getColour(), targetLocation).kill(); 
-                        }
-                       
-                        // if target is empty, move
-                        else {
-                            player.getPieceFromString(piece).setLocation(targetLocation); // set location
-                        }
+            if (player.getPieceFromString(piece).isPossible(targetLocation)) {
+                System.out.println("3");
+                // if there is no obstacles, continue
+                if (isPathClear(player.getPieceFromString(piece).getPath(targetLocation))) {
+                    System.out.println("4");
+                    // if target is same colour, error
+                    if (isTargetClear(targetLocation) == player.getColour()) {
+                        // illegal move
+                        throw new Exception("targetIsSameColour");
                     }
+                        
+                    // if target is different colour, kill piece
+                    else if (isTargetClear(targetLocation) != player.getColour() && isTargetClear(targetLocation) != '0') {
+                        getEnemyPieceFromLocation(player.getColour(), targetLocation).kill();
+                        counter++;
+                        System.out.println("5");
+                    }
+                       
+                    // if target is empty, move
+                    else {
+                        player.getPieceFromString(piece).setLocation(targetLocation); // set location
+                        counter++;
+                        System.out.println("6");
+                    }
+                }
 
                     else {
                         // illegal move
@@ -141,57 +150,25 @@ class Board {
             throw new Exception("opponentTurn");
         }
     }
-    
-   /* public void display() {
-        boardArrayForDisplay = new String[8][8];
-        Location newLoc;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                newLoc = new Location(i,j);
-                if (white.getPieceFromLocation(newLoc) instanceof ChessPiece) {
-                    boardArrayForDisplay[i][j] = "White " + white.getPieceFromLocation(newLoc);
-                }
-                else if (black.getPieceFromLocation(newLoc) instanceof ChessPiece) { 
-                    boardArrayForDisplay[i][j] = "Black " + white.getPieceFromLocation(newLoc);
-                }
-                else {(boardArrayForDisplay[i][j]);
-            }
-            System.out.println();
-        }
-    }
-}
-
-                    boardArrayForDisplay[i][j] = " x ";
-                }      
-            }
-        }
-        
-        System.out.println("--- BOARD ---\n");
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                System.out.printf(boardArrayForDisplay[i][j]);
-            }
-            System.out.println();
-        }
-
-    } */
 
     public void display() {
-        /* TODO:        
-         * Board display yonu ve sirasi duzelt.
-         * if null ise'yi check et
-         */
-        boardArrayForDisplay = new String[8][8];
-        for (ChessPiece tempPiece : getAllPiecesInBoard()) {
-            boardArrayForDisplay[tempPiece.getLocation().getX()][tempPiece.getLocation().getY()] = tempPiece.toString();
-        }
-
-        System.out.println("--- BOARD ---\n");
+        // Update Array
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (boardArrayForDisplay[i][j] != "") System.out.printf(boardArrayForDisplay[i][j]);
-                else System.out.println(" x ");
+                boardArrayForDisplay.put(new Location(i, j).toString(), " ");
             }
+        }
+        for (ChessPiece tempPiece : getAllPiecesInBoard()) {
+            boardArrayForDisplay.put(tempPiece.getLocation().toString(), tempPiece.toString());
+        }
+        // Print Array
+        System.out.println("--- BOARD ---\n");
+        System.out.printf("%10s%10s%10s%10s%10s%10s%10s%10s\n", "1     ", "2     ", "3     ", "4     ", "5     ", "6     ", "7     ", "8     \n");
+        for (int i = 0; i < 8; i++) {
+            System.out.printf("%-3c", (char) i + 65);
+            for (int j = 0; j < 8; j++) {
+                    System.out.printf("%-10s", boardArrayForDisplay.get(new Location(i, j).toString()));
+            }    
             System.out.println();
         }
     }

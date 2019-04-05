@@ -64,4 +64,8 @@ class Rook extends ChessPiece {
         }
         return path;
     }
+    @Override
+    public String toString() {
+        return "Rook";
+    }
 }

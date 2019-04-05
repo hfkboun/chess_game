@@ -26,4 +26,8 @@ class Knight extends ChessPiece {
         path[0] = this.getLocation();
         return path;
     }
+    @Override
+    public String toString() {
+        return "Knight";
+    }
 }
