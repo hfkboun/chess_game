@@ -27,6 +27,6 @@ class King extends ChessPiece {
 
     @Override
     public String toString() {
-        return "King";
+        return getPieceColour()+"King";
     } 
 }

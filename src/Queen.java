@@ -122,6 +122,6 @@ class Queen extends ChessPiece {
 
     @Override
     public String toString() {
-        return "Queen";
+        return getPieceColour()+"Queen";
     } 
 }

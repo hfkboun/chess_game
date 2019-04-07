@@ -26,6 +26,6 @@ class Knight extends ChessPiece {
     }
     @Override
     public String toString() {
-        return "Knight";
+        return getPieceColour()+"Knight";
     }
 }
